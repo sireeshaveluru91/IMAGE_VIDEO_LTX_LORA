@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "image_video_ltx_lora"
+version = "0.1.0"
+description = "LTX image-to-video pipeline with Docker + SageMaker scaffolding"
+authors = [{ name = "Your Team" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "typer[all]>=0.12",
+    "pydantic>=2.6",
+    "pyyaml>=6.0",
+    "torch>=2.2",
+    "diffusers>=0.25",
+    "accelerate>=0.25",
+    "xformers>=0.0.22",
+    "einops>=0.7",
+    "bitsandbytes>=0.43",
+    "boto3>=1.34",
+    "sagemaker>=2.213",
+    "rich>=13.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.2",
+    "pre-commit>=3.6",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.urls]
+Repository = "https://example.com/ltx"
+
+[tool.ruff]
+line-length = 110
+src = ["src", "tests"]
+select = ["E", "F", "I", "UP", "B", "N", "ANN"]
+ignore = ["ANN101", "ANN102"]
